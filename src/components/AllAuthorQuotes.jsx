@@ -8,7 +8,7 @@ const AllAuthorQuotes = () => {
       alignItems="center"
       width="67.2rem"
       height="15.1rem"
-      _hover={{ background: "#333333" }}
+      _hover={{ background: "#333333", color: "#ffffff" }}
       marginTop="10rem"
     >
       <Flex direction="column" width="90%">
