@@ -14,7 +14,6 @@ const reducer = (state, action) => {
                 randomQuote: state.randomQuote
             }
 
-    
         default:
             return state;
     }

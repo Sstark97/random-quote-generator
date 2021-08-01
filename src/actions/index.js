@@ -7,3 +7,8 @@ export const getRandomQuote = (payload) => ({
     type: 'GET_RANDOM_QUOTE',
     payload,
 });
+
+export const setQuotes = (payload) => ({
+  type: 'SET_QUOTES',
+  payload,
+});

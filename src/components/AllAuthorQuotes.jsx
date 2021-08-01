@@ -3,8 +3,10 @@ import { BsArrowRight } from "react-icons/bs";
 import { Text, Flex } from "@chakra-ui/react";
 import { connect } from "react-redux";
 import { getRandomQuote } from "../actions";
+import { useHistory } from "react-router";
 
 const AllAuthorQuotes = ({ getRandomQuote, randomQuote }) => {
+  const history = useHistory();
   return (
     <Flex
       alignItems="center"
@@ -17,6 +19,9 @@ const AllAuthorQuotes = ({ getRandomQuote, randomQuote }) => {
           ? "flex"
           : "none"
       }
+      onClick={() => {
+        history.push(`/quotes/${randomQuote[0]?.quoteAuthor}`);
+      }}
     >
       <Flex direction="column" width="90%">
         <Text fontSize="2.4rem">{randomQuote[0]?.quoteAuthor}</Text>

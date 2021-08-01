@@ -8,7 +8,8 @@ import reducer from './reducers';
 import App from './App';
 
 const initialState = {
-  "randomQuote": []
+  "randomQuote": [],
+  "quotes": [],
 }
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
