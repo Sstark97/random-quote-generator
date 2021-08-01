@@ -5,7 +5,7 @@ import { connect } from "react-redux";
 import { getRandomQuote } from "../actions";
 import { useHistory } from "react-router";
 
-const AllAuthorQuotes = ({ getRandomQuote, randomQuote }) => {
+const AllAuthorQuotes = ({ randomQuote }) => {
   const history = useHistory();
   return (
     <Flex
