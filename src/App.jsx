@@ -1,4 +1,3 @@
-import logo from "./logo.svg";
 import "./styles/App.css";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 import { ChakraProvider } from "@chakra-ui/react";
