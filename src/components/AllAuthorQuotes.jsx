@@ -1,19 +1,23 @@
 import React from "react";
 import { BsArrowRight } from "react-icons/bs";
-import { Text, Flex } from "@chakra-ui/react";
+import { Text, Flex, useMediaQuery } from "@chakra-ui/react";
 import { connect } from "react-redux";
 import { getRandomQuote } from "../actions";
 import { useHistory } from "react-router";
 
 const AllAuthorQuotes = ({ randomQuote }) => {
   const history = useHistory();
+  const [isLargerThan600] = useMediaQuery("(min-width: 600px)");
   return (
     <Flex
       alignItems="center"
-      width="67.2rem"
+      width={isLargerThan600 ? "67.2rem" : "25rem"}
       height="15.1rem"
       _hover={{ background: "#333333", color: "#ffffff" }}
-      marginTop="10rem"
+      background={!isLargerThan600 ? "#333333" : null}
+      color={!isLargerThan600 ? "#ffffff" : null}
+      marginTop={isLargerThan600 ? "10rem" : "3rem"}
+      padding="3rem"
       display={
         randomQuote[0] !== undefined && randomQuote[0].quoteText !== undefined
           ? "flex"
@@ -30,7 +34,7 @@ const AllAuthorQuotes = ({ randomQuote }) => {
         </Text>
       </Flex>
 
-      <BsArrowRight size="2.5rem" />
+      <BsArrowRight size="2.5rem" color="#fff" />
     </Flex>
   );
 };

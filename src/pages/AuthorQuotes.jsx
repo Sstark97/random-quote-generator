@@ -1,5 +1,13 @@
 import React, { useState, useEffect } from "react";
-import { Text, Flex, List, ListItem, Button } from "@chakra-ui/react";
+import {
+  Text,
+  Flex,
+  List,
+  ListItem,
+  Button,
+  Spinner,
+  useMediaQuery,
+} from "@chakra-ui/react";
 import { connect } from "react-redux";
 import { getRandomQuote } from "../actions";
 import axios from "axios";
@@ -10,6 +18,7 @@ const AuthorQuotes = ({ getRandomQuote, randomQuote }) => {
   const [quotes, setQuotes] = useState([]);
   const [page, setPage] = useState(1);
   const [finalPage, setFinalPage] = useState(0);
+  const [isLargerThan600] = useMediaQuery("(min-width: 600px)");
 
   useEffect(() => {
     async function getData() {
@@ -53,13 +62,21 @@ const AuthorQuotes = ({ getRandomQuote, randomQuote }) => {
     setQuotes(data.data);
   };
 
+  if (quotes.length === 0) {
+    return (
+      <Flex height="100%" justifyContent="center" alignItems="center">
+        <Spinner size="lg" />
+      </Flex>
+    );
+  }
+
   return (
     <Flex direction="column" width="100%" height="100%" alignItems="center">
       {" "}
       <Text fontSize="2.8rem" fontWeight="bold">
         {randomQuote[0]?.quoteAuthor}
       </Text>{" "}
-      <List overflow="scroll">
+      <List overflow="scroll" fontSize={!isLargerThan600 ? "2.3rem" : "3.6rem"}>
         {quotes.map((quote) => (
           <ListItem key={quote._id} marginBottom="6.5rem">
             <QuoteCard quote={quote} />

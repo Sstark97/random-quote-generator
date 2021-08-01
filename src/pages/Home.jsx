@@ -26,6 +26,7 @@ const Home = ({ setRandomQuote }) => {
       height="100%"
       justifyContent="center"
       alignItems="center"
+      padding="1rem"
     >
       <QuoteCard />
       <AllAuthorQuotes />

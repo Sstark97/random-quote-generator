@@ -1,9 +1,11 @@
 import React from "react";
-import { Text, Flex, Spinner } from "@chakra-ui/react";
+import { Text, Flex, Spinner, useMediaQuery } from "@chakra-ui/react";
 import { connect } from "react-redux";
 import { getRandomQuote } from "../actions";
 
 const QuoteCard = ({ getRandomQuote, randomQuote, quote }) => {
+  const [isLargerThan600] = useMediaQuery("(min-width: 600px)");
+
   if (quote !== undefined) {
     return (
       <Flex
@@ -12,7 +14,9 @@ const QuoteCard = ({ getRandomQuote, randomQuote, quote }) => {
         maxWidth="61.4rem"
         paddingRight="1rem"
       >
-        <Text fontSize="3.6rem">{`"${quote.quoteText}"`}</Text>
+        <Text
+          fontSize={isLargerThan600 ? "3.6rem" : "2.3rem"}
+        >{`"${quote.quoteText}"`}</Text>
       </Flex>
     );
   } else {
@@ -27,8 +31,11 @@ const QuoteCard = ({ getRandomQuote, randomQuote, quote }) => {
           borderLeft="3px solid #F7DF94"
           maxWidth="61.4rem"
           paddingRight="1rem"
+          overflow={!isLargerThan600 ? "scroll" : null}
         >
-          <Text fontSize="3.6rem">{`"${randomQuote[0]?.quoteText}"`}</Text>
+          <Text
+            fontSize={isLargerThan600 ? "3.6rem" : "2.3rem"}
+          >{`"${randomQuote[0]?.quoteText}"`}</Text>
         </Flex>
       );
     } else {
